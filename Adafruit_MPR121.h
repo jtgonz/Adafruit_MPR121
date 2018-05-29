@@ -1,22 +1,22 @@
-/*************************************************** 
+/***************************************************
   This is a library for the MPR121 12-Channel Capacitive Sensor
 
   Designed specifically to work with the MPR121 breakout from Adafruit
   ----> https://www.adafruit.com/products/1982
 
-  These sensors use I2C to communicate, 2+ pins are required to  
+  These sensors use I2C to communicate, 2+ pins are required to
   interface
-  Adafruit invests time and resources providing this open source code, 
-  please support Adafruit and open-source hardware by purchasing 
+  Adafruit invests time and resources providing this open source code,
+  please support Adafruit and open-source hardware by purchasing
   products from Adafruit!
 
-  Written by Limor Fried/Ladyada for Adafruit Industries.  
+  Written by Limor Fried/Ladyada for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
 #ifndef ADAFRUIT_MPR121_H
 #define ADAFRUIT_MPR121_H
- 
+
 #if (ARDUINO >= 100)
  #include "Arduino.h"
 #else
@@ -45,17 +45,17 @@
 #define MPR121_FDLT         0x35
 
 #define MPR121_TOUCHTH_0    0x41
-#define MPR121_RELEASETH_0    0x42
-#define MPR121_DEBOUNCE 0x5B
-#define MPR121_CONFIG1 0x5C
-#define MPR121_CONFIG2 0x5D
+#define MPR121_RELEASETH_0  0x42
+#define MPR121_DEBOUNCE     0x5B
+#define MPR121_CONFIG1      0x5C
+#define MPR121_CONFIG2      0x5D
 #define MPR121_CHARGECURR_0 0x5F
 #define MPR121_CHARGETIME_1 0x6C
-#define MPR121_ECR 0x5E
-#define MPR121_AUTOCONFIG0 0x7B
-#define MPR121_AUTOCONFIG1 0x7C
-#define MPR121_UPLIMIT   0x7D
-#define MPR121_LOWLIMIT  0x7E
+#define MPR121_ECR          0x5E
+#define MPR121_AUTOCONFIG0  0x7B
+#define MPR121_AUTOCONFIG1  0x7C
+#define MPR121_UPLIMIT      0x7D
+#define MPR121_LOWLIMIT     0x7E
 #define MPR121_TARGETLIMIT  0x7F
 
 #define MPR121_GPIODIR  0x76
@@ -83,6 +83,9 @@ class Adafruit_MPR121 {
   uint16_t readRegister16(uint8_t reg);
   void writeRegister(uint8_t reg, uint8_t value);
   uint16_t touched(void);
+
+  boolean autoconfig(void);
+
   // Add deprecated attribute so that the compiler shows a warning
   __attribute__((deprecated)) void setThreshholds(uint8_t touch, uint8_t release);
   void setThresholds(uint8_t touch, uint8_t release);
